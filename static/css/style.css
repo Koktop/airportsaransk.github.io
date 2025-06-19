@@ -1,0 +1,291 @@
+/* Общие стили */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Стили для навигации */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Стили для главной страницы */
+.jumbotron {
+    background-color: var(--bs-primary);
+    color: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Стили для карточек */
+.card {
+    transition: transform 0.2s;
+    margin-bottom: 1rem;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Стили для таблиц */
+.table {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background-color: #0d6efd;
+    color: white;
+    font-weight: 600;
+    border-bottom: 2px solid #0a58ca;
+    padding: 1rem;
+}
+
+.table tbody td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+.table .badge {
+    padding: 0.5em 1em;
+    font-weight: 500;
+    font-size: 0.9em;
+}
+
+/* Стили для форм */
+.form-control:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.25);
+}
+
+/* Стили для кнопок */
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:active {
+    background-color: #0a58ca;
+    border-color: #084298;
+    transform: translateY(0);
+}
+
+.btn-primary:focus {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Стили для футера */
+.footer {
+    background-color: #343a40;
+    color: #ffffff;
+    border-top: 1px solid #454d55;
+    margin-top: auto;
+}
+
+.footer h5 {
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.footer ul li {
+    margin-bottom: 0.5rem;
+    color: #adb5bd;
+}
+
+.footer ul li i {
+    color: #6c757d;
+}
+
+.footer hr {
+    margin: 1.5rem 0;
+    border-color: #454d55;
+}
+
+.footer p {
+    color: #adb5bd;
+}
+
+@media (max-width: 768px) {
+    .footer .col-md-6 {
+        text-align: center;
+    }
+}
+
+/* Стили для темной темы */
+[data-bs-theme="dark"] {
+    --bs-body-bg: #212529;
+    --bs-body-color: #f8f9fa;
+}
+
+[data-bs-theme="dark"] .card {
+    background-color: #2c3034;
+    border-color: #373b3e;
+}
+
+[data-bs-theme="dark"] .table {
+    background-color: #2c3034;
+    color: #f8f9fa;
+}
+
+[data-bs-theme="dark"] .table thead th {
+    background-color: #0d6efd;
+    border-color: #0a58ca;
+}
+
+[data-bs-theme="dark"] .table-hover tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.15);
+}
+
+[data-bs-theme="dark"] .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-bs-theme="dark"] .footer {
+    background-color: #212529;
+    border-color: #343a40;
+}
+
+[data-bs-theme="dark"] .footer ul li,
+[data-bs-theme="dark"] .footer p {
+    color: #adb5bd;
+}
+
+[data-bs-theme="dark"] .footer ul li i {
+    color: #6c757d;
+}
+
+[data-bs-theme="dark"] .text-muted {
+    color: #adb5bd !important;
+}
+
+[data-bs-theme="dark"] .btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+[data-bs-theme="dark"] .btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+[data-bs-theme="dark"] .btn-primary:active {
+    background-color: #0a58ca;
+    border-color: #084298;
+}
+
+[data-bs-theme="dark"] .btn-primary:focus {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Стили для переключателя темы */
+#themeToggle {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+#themeToggle:hover {
+    transform: rotate(15deg);
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .jumbotron {
+        padding: 1.5rem;
+    }
+    
+    .card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Стили для страницы контактов */
+.contact-info li {
+    margin-bottom: 1rem;
+}
+
+.contact-info i {
+    width: 20px;
+    margin-right: 10px;
+}
+
+/* Стили для страницы о нас */
+.achievement-card {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.achievement-card h3 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--bs-primary);
+}
+
+/* Стили для страницы расписания */
+.schedule-filters {
+    background-color: var(--bs-light);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+[data-bs-theme="dark"] .schedule-filters {
+    background-color: #2c3034;
+}
+
+/* Стили для бейджей статуса */
+.badge {
+    padding: 0.5em 0.8em;
+    font-weight: 500;
+}
+
+/* Стили для иконок в списках */
+.list-group-item i {
+    width: 20px;
+    margin-right: 10px;
+    color: var(--bs-primary);
+}
+
+[data-bs-theme="dark"] .list-group-item i {
+    color: var(--bs-primary-light);
+} 

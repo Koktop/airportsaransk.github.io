@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<div class="hero-section position-relative text-white py-5 mb-4" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ url_for('static', filename='images/airport-background.jpg') }}'); background-size: cover; background-position: center;">
+    <div class="container">
+        <h1 class="display-4">Добро пожаловать в Аэропорт Саранск!</h1>
+        <p class="lead">Международный аэропорт федерального значения</p>
+        <hr class="my-4">
+        <p>Мы обеспечиваем безопасные и комфортные перелеты для тысяч пассажиров ежегодно.</p>
+        <div class="mt-4">
+            <a href="tel:+78342546668" class="btn btn-primary btn-lg">
+                <i class="fas fa-phone"></i> +7 (8342) 54-66-68
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-plane-departure me-2"></i>Онлайн-табло</h5>
+                <p class="card-text">Актуальное расписание вылетов и прилетов</p>
+                <a href="{{ url_for('schedule') }}" class="btn btn-primary">Смотреть расписание</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-route me-2"></i>Популярные направления</h5>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-plane me-2"></i>Москва (Шереметьево)</li>
+                    <li><i class="fas fa-plane me-2"></i>Санкт-Петербург</li>
+                    <li><i class="fas fa-plane me-2"></i>Сочи</li>
+                    <li><i class="fas fa-plane me-2"></i>Екатеринбург</li>
+                    <li><i class="fas fa-plane me-2"></i>Анталья</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-concierge-bell me-2"></i>Услуги</h5>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-parking me-2"></i>Парковка</li>
+                    <li><i class="fas fa-taxi me-2"></i>Такси</li>
+                    <li><i class="fas fa-wifi me-2"></i>Бесплатный Wi-Fi</li>
+                    <li><i class="fas fa-utensils me-2"></i>Кафе и рестораны</li>
+                    <li><i class="fas fa-suitcase me-2"></i>Упаковка багажа</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <h2 class="mb-4">Ближайшие рейсы</h2>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Рейс</th>
+                            <th>Авиакомпания</th>
+                            <th>Направление</th>
+                            <th>Время вылета</th>
+                            <th>Сектор</th>
+                            <th>Статус</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for flight in flights %}
+                        <tr>
+                            <td class="fw-bold">{{ flight.flight_number }}</td>
+                            <td>{{ flight.airline }}</td>
+                            <td>{{ flight.destination }}</td>
+                            <td>{{ flight.departure_time.strftime('%H:%M') }}</td>
+                            <td>{{ flight.terminal }}</td>
+                            <td>
+                                <span class="badge {% if flight.status == 'По расписанию' %}bg-success
+                                                 {% elif flight.status == 'Регистрация' %}bg-info
+                                                 {% elif flight.status == 'Задержан' %}bg-warning
+                                                 {% else %}bg-danger{% endif %}">
+                                    {{ flight.status }}
+                                </span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center mt-3">
+                <a href="{{ url_for('schedule') }}" class="btn btn-primary">Показать все рейсы</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

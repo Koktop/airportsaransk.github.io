@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}Контакты{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Контакты</h1>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Контактная информация</h5>
+                    <ul class="list-unstyled contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Республика Мордовия, г. Саранск, ул. Аэропорт, 1</li>
+                        <li><i class="fas fa-phone"></i> +7 (8342) 24-00-00</li>
+                        <li><i class="fas fa-envelope"></i> genuvseznayt@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Круглосуточно</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Как добраться</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-bus"></i> Автобус №29</li>
+                        <li><i class="fas fa-taxi"></i> Такси</li>
+                        <li><i class="fas fa-car"></i> Личный автомобиль</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Связаться с нами</h5>
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Ваше имя</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Тема</label>
+                            <input type="text" class="form-control" id="subject" name="subject" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Сообщение</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="privacy" name="privacy" required>
+                            <label class="form-check-label" for="privacy">
+                                Я согласен на обработку персональных данных
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Полезные телефоны</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <strong>Справочная служба:</strong><br>
+                                    +7 (8342) 54-66-68
+                                </li>
+                                <li class="mb-2">
+                                    <strong>Служба безопасности:</strong><br>
+                                    +7 (8342) 54-XX-XX
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <strong>Медпункт:</strong><br>
+                                    +7 (8342) 54-XX-XX
+                                </li>
+                                <li class="mb-2">
+                                    <strong>Заказ такси:</strong><br>
+                                    +7 (8342) 54-XX-XX
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

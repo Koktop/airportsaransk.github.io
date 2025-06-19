@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Расписание рейсов{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Расписание рейсов</h1>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Поиск рейсов</h5>
+        <form class="row g-3" method="get">
+            <div class="col-md-4">
+                <label for="destination" class="form-label">Направление</label>
+                <input type="text" class="form-control" id="destination" name="destination" value="{{ request.args.get('destination', '') }}">
+            </div>
+            <div class="col-md-4">
+                <label for="date" class="form-label">Дата</label>
+                <input type="date" class="form-control" id="date" name="date" value="{{ request.args.get('date', '') }}">
+            </div>
+            <div class="col-md-4">
+                <label for="status" class="form-label">Статус</label>
+                <select class="form-select" id="status" name="status">
+                    <option value="">Все</option>
+                    <option value="По расписанию" {% if request.args.get('status') == 'По расписанию' %}selected{% endif %}>По расписанию</option>
+                    <option value="Регистрация" {% if request.args.get('status') == 'Регистрация' %}selected{% endif %}>Регистрация</option>
+                    <option value="Задержан" {% if request.args.get('status') == 'Задержан' %}selected{% endif %}>Задержан</option>
+                    <option value="Отменен" {% if request.args.get('status') == 'Отменен' %}selected{% endif %}>Отменен</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Поиск</button>
+                <a href="{{ url_for('schedule') }}" class="btn btn-secondary">Сбросить</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Рейс</th>
+                <th>Авиакомпания</th>
+                <th>Направление</th>
+                <th>Время вылета</th>
+                <th>Время прилета</th>
+                <th>Сектор</th>
+                <th>Тип ВС</th>
+                <th>Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for flight in flights %}
+            <tr>
+                <td>{{ flight.flight_number }}</td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        {{ flight.airline }}
+                    </div>
+                </td>
+                <td>{{ flight.destination }}</td>
+                <td>{{ flight.departure_time.strftime('%d.%m.%Y %H:%M') }}</td>
+                <td>{{ flight.arrival_time.strftime('%d.%m.%Y %H:%M') }}</td>
+                <td>{{ flight.terminal }}</td>
+                <td>{{ flight.aircraft_type }}</td>
+                <td>
+                    <span class="badge {% if flight.status == 'По расписанию' %}bg-success
+                                     {% elif flight.status == 'Регистрация' %}bg-info
+                                     {% elif flight.status == 'Задержан' %}bg-warning
+                                     {% else %}bg-danger{% endif %}">
+                        {{ flight.status }}
+                    </span>
+                    {% if flight.check_in_counter %}
+                    <br>
+                    <small>Стойка: {{ flight.check_in_counter }}</small>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% if not flights %}
+<div class="alert alert-info" role="alert">
+    Рейсы не найдены. Попробуйте изменить параметры поиска.
+</div>
+{% endif %}
+{% endblock %} 
